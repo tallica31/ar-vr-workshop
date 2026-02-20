@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <title>Part 1 - Image Tracking</title>
+    <link rel="stylesheet" href="./style.css" />
+
+    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
+  </head>
+  <body>
+    <div class="hint">ターゲット画像にカメラを向けてください</div>
+
+    <a-scene
+      mindar-image="imageTargetSrc: ./assets/targets.mind; autoStart: true; uiError: yes; uiLoading: yes; uiScanning: yes;"
+      color-space="sRGB"
+      renderer="colorManagement: true, physicallyCorrectLights"
+      vr-mode-ui="enabled: false"
+      device-orientation-permission-ui="enabled: false"
+    >
+      <a-assets>
+        <a-asset-item id="demoModel" src="./assets/model/scene.gltf"></a-asset-item>
+      </a-assets>
+
+      <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+
+      <a-entity mindar-image-target="targetIndex: 0">
+        <a-gltf-model
+          src="#demoModel"
+          position="0 0 0"
+          rotation="0 0 0"
+          scale="0.2 0.2 0.2"
+        ></a-gltf-model>
+      </a-entity>
+    </a-scene>
+  </body>
+</html>
